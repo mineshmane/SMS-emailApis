@@ -43,7 +43,7 @@ mongoose.connect(config.mongoUrl, {
 
     }
 })
-app.listen(4003, (err, data) => {
+app.listen(4000, (err, data) => {
     if (err) {
         console.log(" error in listening ", err);
 

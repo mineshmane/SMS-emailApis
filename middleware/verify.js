@@ -1,11 +1,11 @@
 const jwt = require('jsonwebtoken');
-const config = require('../config/config')
+const config = require('../configu/config')
 var auth = (req, res, next) => {
-    // let token = req.headers['token']
-    let token=req.params.token
-     console.log(" tokemn=====>>>>>>",token);
-var secret = "secretkey";
-     
+     // let token = req.headers['token']
+     let token = req.params.token
+     console.log(" tokemn=====>>>>>>", token);
+     var secret = "secretkey";
+
      jwt.verify(token, secret, function (err, decoded) {
           if (err) {
                // console.log(err);
