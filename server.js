@@ -1,6 +1,6 @@
 var express = require('express');
 const mongoose = require('mongoose');
-const config=require('./config/config')
+const config=require('./configu/config')
 const app = express();
 const cors=require('cors')
 const route=require('./router/router')
