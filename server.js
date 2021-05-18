@@ -1,18 +1,41 @@
 var express = require('express');
 const mongoose = require('mongoose');
-const config=require('./configu/config')
+const config = require('./configu/config')
 const app = express();
-const cors=require('cors')
-const route=require('./router/router')
+const cors = require('cors')
+const route = require('./router/router')
+const swaggerJSDoc = require('swagger-jsdoc');
+const swaggerUi = require('swagger-ui-express');
+const swaggerDoc=require('./swaggerui/swaggerapi')
+const host = '0.0.0.0';
 const webPush = require('web-push');
 const path = require('path');
 app.use(express.json());
 app.use(cors())
 app.use(express.urlencoded({
-  extended: true
+    extended: true
 }));
-app.use('/', route);
 
+
+
+  const options = {
+    swaggerDefinition,
+    // Paths to files containing OpenAPI definitions
+    apis: ['router/router.js'],
+  };
+  
+  const swaggerSpec = swaggerJSDoc(options);
+
+
+
+app.use('/api', route);
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDoc,{ explorer: true }));
+
+app.get('/',(req,res)=>{
+    res.redirect('/api-docs')
+   
+   })
+   
 // app.use(express.static(path.join(__dirname, 'client')));
 // const publicVapidKey = process.env.PUBLIC_VAPID_KEY;
 // const privateVapidKey = process.env.PRIVATE_VAPID_KEY;
@@ -27,6 +50,7 @@ app.use('/', route);
 //       title: 'Push notifications with Service Workers',
 //     });
 
+
 //     webPush.sendNotification(subscription, payload)
 //       .catch(error => console.error(error));
 //   });
@@ -39,17 +63,17 @@ mongoose.connect(config.mongoUrl, {
 
     } else {
         console.log('Database connected successFully');
-     
+
 
     }
 })
-app.listen(4000, (err, data) => {
+app.listen(process.env.PORT || 4000, (err, data) => {
     if (err) {
         console.log(" error in listening ", err);
 
     } else {
         console.log('server connected successfully');
-        console.log('listening on port 4003');
+        console.log('listening on port 4000');
     }
 })
 

@@ -3,6 +3,7 @@ const router = express.Router();
 const userController = require('../controller/userController')
 const auth = require('../middleware/verify')
 
+
 router.post('/register', userController.signUp);
 router.post('/verify/:token', auth, userController.veryfyController);
 router.post('/login',userController.login);
