@@ -158,7 +158,7 @@ module.exports = swaggerDefinition = {
             }
         },
         "/api/getamount": {
-            "post": {
+            "get": {
                 "tags": [
                     "Cash" 
                 ],
@@ -174,8 +174,8 @@ module.exports = swaggerDefinition = {
                 ],
                 "parameters": [
                     {
-                        "name": "Token",
-                        "in": "path",
+                        "name": "token",
+                        "in": "query",
                         "required": true,
                         "description": "This api is used to retrive the cash from account",
                         "schema": {

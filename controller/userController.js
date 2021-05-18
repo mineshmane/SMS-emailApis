@@ -28,7 +28,8 @@ class UserController {
             username: req.body.data.payload.username,
             email: req.body.data.payload.email,
             phone: req.body.data.payload.phone,
-            password: req.body.data.payload.password
+            password: req.body.data.payload.password,
+            
         }
         service.storeInDatabase(obj).then(result => {
             return res.send(result)
@@ -47,7 +48,7 @@ class UserController {
     }
 
     getMount(req, res) {
-        console.log("paload", req.body.data.payload.id);
+        console.log("paload", req.body.data.payload);
         service.getAmount(req.body.data.payload.id).then(data => {
             return res.send(data)
         }).catch(err => {

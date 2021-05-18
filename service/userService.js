@@ -99,7 +99,8 @@ class UserService {
                         username: data[0].username,
                         email: data[0].email,
                         phone: data[0].phone,
-                        token: resObj.token
+                        token: resObj.token,
+                        UserId:data[0]._id
                     }
 
                     return { "message": "login successfull", "data": obj }
