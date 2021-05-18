@@ -1,9 +1,5 @@
 module.exports = swaggerDefinition = {
 
-
-
-
-
     "swagger": "2.0",
     "info": {
         "description": "This is a REST API development server application made with Express.",
@@ -52,10 +48,10 @@ module.exports = swaggerDefinition = {
                 ],
                 "responses": {
                     "200": {
-                        "description": "Login Successful"
+                        "description": "email sent  Successful"
                     },
                     "401": {
-                        "description": "Wrong password !"
+                        "description": "Wrong phone !"
                     },
                     "404": {
                         "description": "Not Found !"
@@ -90,18 +86,18 @@ module.exports = swaggerDefinition = {
                         "name": "User",
                         "in": "path",
                         "required": true,
-                        "description": "This api is used to create User account",
+                        "description": "This api is used to store data in data base",
                         "schema": {
-                            "$ref": "#/definitions/User Registration"
+                            "$ref": "#/definitions/User Verification"
                         }
                     }
                 ],
                 "responses": {
                     "200": {
-                        "description": "Login Successful"
+                        "description": "email send Successful"
                     },
                     "401": {
-                        "description": "Wrong password !"
+                        "description": "Wrong email !"
                     },
                     "404": {
                         "description": "Not Found !"
@@ -123,28 +119,39 @@ module.exports = swaggerDefinition = {
             "properties": {
                 "username": {
                     "type": "string",
-                    "example": "adminFirstName",
+                    "example": "username",
                     "required": true
                 },
                 "phone": {
                     "type": "string",
-                    "example": "adminLastName",
+                    "example": "phone",
                     "required": true
                 },
                 "email": {
                     "type": "string",
-                    "example": "admin@gmail.com",
+                    "example": "user@gmail.com",
                     "required": true
                 },
                 
                 "password": {
                     "type": "string",
-                    "example": "admin",
+                    "example": "123123",
                     "required": true
                 }
             }
         },
+        "User Verification": {
+            "properties": {
+                "token": {
+                    "type": "string",
+                    "example": "adminFirstName",
+                    "required": true
+                },
+              
+            }
+        },
     },
+   
     "securityDefinitions": {
         "token": {
             "type": "apiKey",
