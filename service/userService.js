@@ -50,7 +50,7 @@ class UserService {
             const url = `http://localhost:4200/verify/${resObj.token}`;
 
 
-            sendMail.mail(url, (err, data) => {
+            sendMail.mail(url,payload, (err, data) => {
                 if (err) {
                     reject(err)
                 }

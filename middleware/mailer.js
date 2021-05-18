@@ -1,6 +1,6 @@
-module.exports.mail = (url,callback) => {
+module.exports.mail = (url,email,callback) => {
   var nodemailer = require('nodemailer');
- 
+ console.log(" email is in emailer", email.email);
   var transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
@@ -11,7 +11,7 @@ module.exports.mail = (url,callback) => {
 
   var mailOptions = {
     from: 'mineshmane94@gmail.com',
-    to: 'mineshmane94@gmail.com',
+    to: email.email,
     subject: 'Verification link',
     text: url
   };

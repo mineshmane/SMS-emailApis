@@ -5,7 +5,7 @@ const auth = require('../middleware/verify')
 
 
 router.post('/register', userController.signUp);
-router.post('/verify/:token', auth, userController.veryfyController);
+router.post('/verification/:token', auth, userController.veryfyController);
 router.post('/login',userController.login);
 router.get('/amount/:token',auth,userController.getMount)
 router.put('/deposite/:token',auth,userController.deposite)

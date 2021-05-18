@@ -70,6 +70,52 @@ module.exports = swaggerDefinition = {
             }
         },
 
+        "/api/verification": {
+            "post": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "",
+                "description": "",
+                "produces": [
+                    "application/json"
+                ],
+                "security": [
+                    {
+                        "token": []
+                    }
+                ],
+                "parameters": [
+                    {
+                        "name": "User",
+                        "in": "path",
+                        "required": true,
+                        "description": "This api is used to create User account",
+                        "schema": {
+                            "$ref": "#/definitions/User Registration"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Login Successful"
+                    },
+                    "401": {
+                        "description": "Wrong password !"
+                    },
+                    "404": {
+                        "description": "Not Found !"
+                    },
+                    "422": {
+                        "description": "Invalid Credentials !"
+                    },
+                    "500": {
+                        "description": "Something went wrong !"
+                    }
+                }
+            }
+        },
+
     },
 
     "definitions": {
