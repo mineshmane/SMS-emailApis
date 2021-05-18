@@ -157,7 +157,7 @@ module.exports = swaggerDefinition = {
                 }
             }
         },
-        "/api/getamount": {
+        "/api/getamount/{token}": {
             "get": {
                 "tags": [
                     "Cash" 
@@ -175,11 +175,101 @@ module.exports = swaggerDefinition = {
                 "parameters": [
                     {
                         "name": "token",
-                        "in": "query",
+                        "in": "path",
                         "required": true,
                         "description": "This api is used to retrive the cash from account",
                         "schema": {
                             "$ref": "#/definitions/Cash GetAmount"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "amount retrived  Successful"
+                    },
+                    "401": {
+                        "description": "token expired !"
+                    },
+                    "404": {
+                        "description": "Not Found !"
+                    },
+                    "422": {
+                        "description": "Invalid Credentials !"
+                    },
+                    "500": {
+                        "description": "Something went wrong !"
+                    }
+                }
+            }
+        },
+        "/api/deposite/{token}": {
+            "put": {
+                "tags": [
+                    "Cash" 
+                ],
+                "summary": "",
+                "description": "",
+                "produces": [
+                    "application/json"
+                ],
+                "security": [
+                    {
+                        "token": []
+                    }
+                ],
+                "parameters": [
+                    {
+                        "name": "token",
+                        "in": "path",
+                        "required": true,
+                        "description": "This api is used to deposite amount to account",
+                        "schema": {
+                            "$ref": "#/definitions/Cash Deposite"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Login Successful"
+                    },
+                    "401": {
+                        "description": "Wrong password !"
+                    },
+                    "404": {
+                        "description": "Not Found !"
+                    },
+                    "422": {
+                        "description": "Invalid Credentials !"
+                    },
+                    "500": {
+                        "description": "Something went wrong !"
+                    }
+                }
+            }
+        },
+        "/api/withdraw": {
+            "put": {
+                "tags": [
+                    "Cash" 
+                ],
+                "summary": "",
+                "description": "",
+                "produces": [
+                    "application/json"
+                ],
+                "security": [
+                    {
+                        "token": []
+                    }
+                ],
+                "parameters": [
+                    {
+                        "name": "token",
+                        "in": "body",
+                        "required": true,
+                        "description": "This api is used to withdraw amount from  account",
+                        "schema": {
+                            "$ref": "#/definitions/Cash Withdraw"
                         }
                     }
                 ],
@@ -262,6 +352,37 @@ module.exports = swaggerDefinition = {
                 "token": {
                     "type": "string",
                     "example": "token",
+                    "required": true
+                },
+              
+              
+            }
+        },
+        "Cash Deposite": {
+            "properties": {
+                "token": {
+                    "type": "string",
+                    "example": "token",
+                    "required": true
+                },
+                "amount": {
+                    "type": "Number",
+                    "example": "00",
+                    "required": true
+                },
+              
+            }
+        },
+        "Cash Withdraw": {
+            "properties": {
+                "token": {
+                    "type": "string",
+                    "example": "token",
+                    "required": true
+                },
+                "amount": {
+                    "type": "Number",
+                    "example": "00",
                     "required": true
                 },
               
