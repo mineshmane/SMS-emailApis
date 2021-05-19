@@ -47,7 +47,7 @@ class UserService {
 
 
 
-            const url = `http://localhost:4200/verify/${resObj.token}`;
+            const url = `https://email-app-front.herokuapp.com/verify/${resObj.token}`;
 
 
             sendMail.mail(url,payload, (err, data) => {
