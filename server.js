@@ -53,7 +53,7 @@ app.get('/',(req,res)=>{
 //     webPush.sendNotification(subscription, payload)
 //       .catch(error => console.error(error));
 //   });
-mongoose.connect(config.mongoUrl, {
+mongoose.connect(process.env.mongoUrl||config.mongoUrl, {
     useNewUrlParser: true,
     useFindAndModify: false, useCreateIndex: true
 }, (err, data) => {
