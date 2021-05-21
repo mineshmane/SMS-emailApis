@@ -7,7 +7,6 @@ const route = require('./router/router')
 const swaggerJSDoc = require('swagger-jsdoc');
 const swaggerUi = require('swagger-ui-express');
 const swaggerDoc=require('./swaggerui/swaggerapi')
-const host = '0.0.0.0';
 const webPush = require('web-push');
 const path = require('path');
 app.use(express.json());
@@ -67,7 +66,7 @@ mongoose.connect(config.mongoUrl, {
 
     }
 })
-app.listen(process.env.PORT || 4000,host, (err, data) => {
+app.listen(process.env.PORT || 4000, (err, data) => {
     if (err) {
         console.log(" error in listening ", err);
 
