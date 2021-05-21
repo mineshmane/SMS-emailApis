@@ -49,7 +49,7 @@ class UserController {
         service.login(req.body).then(response => {
             return res.send(response)
         }).catch(err => {
-            return err
+            return res.send(err)
         })
     }
 

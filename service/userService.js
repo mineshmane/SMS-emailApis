@@ -82,9 +82,10 @@ class UserService {
         })
     }
 
-    login(req) {
+ login(req) {
 
         let reqObj = { 'email': req.email }
+
         return model.get(reqObj).then(data => {
             if (data.length > 0) {
                 if (req.password == data[0].password) {
@@ -94,7 +95,8 @@ class UserService {
                         id: data[0]._id
                     }
 
-                    const resObj = token.generateNewToken(payload);
+                    const resObj =  token.generateNewToken(payload);
+                    console.log(" token genrated ",resObj)
                     let obj = {
                         username: data[0].username,
                         email: data[0].email,
