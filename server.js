@@ -67,7 +67,7 @@ mongoose.connect(config.mongoUrl, {
 
     }
 })
-app.listen(process.env.PORT || 4000, (err, data) => {
+app.listen(process.env.PORT || 4000,host, (err, data) => {
     if (err) {
         console.log(" error in listening ", err);
 

@@ -4,19 +4,25 @@ const token = require('../middleware/token')
 class UserController {
 
     signUp(req, res) {
-        console.log(" controller is calling ", req.body);
-        service.mailService(req.body).then(result => {
+        try {
+            console.log(" controller is calling ", req.body);
+            service.mailService(req.body).then(result => {
 
-            service.sendSmsOtp(req.body.phone).then(response => {
-                return res.send({ "email": response, "sms": result })
+                service.sendSmsOtp(req.body.phone).then(response => {
+                    return res.send({ "email": response, "sms": result })
 
 
+                }).catch(err => {
+                    return res.send(err).status(200)
+                });
             }).catch(err => {
-                return res.send(err).status(200)
-            });
-        }).catch(err => {
+                return res.send(err).status(400)
+            })
+        } catch (error) {
             return res.send(err).status(400)
-        })
+        }
+
+
 
 
 
@@ -29,7 +35,7 @@ class UserController {
             email: req.body.data.payload.email,
             phone: req.body.data.payload.phone,
             password: req.body.data.payload.password,
-            
+
         }
         service.storeInDatabase(obj).then(result => {
             return res.send(result)
@@ -68,7 +74,7 @@ class UserController {
         })
 
     }
-    withdraw(req,res){
+    withdraw(req, res) {
         console.log("paload", req.body.data.payload.id, "abcd", req.body.amount);
         let obj = {
             userId: req.body.data.payload.id,

@@ -6,7 +6,7 @@ module.exports = swaggerDefinition = {
         "version": "1.0.0",
         "title": "Swagger Email -sms verification API Documentation"
     },
-    "host": 'localhost:4000',
+    "host": 'https://email-apis.herokuapp.com/',
     "basePath": "/",
     "tags": [
         {
